@@ -1,11 +1,11 @@
 #!/bin/bash
-
+# Vérifiez si le script est exécuté avec les privilèges root
 if [[ $EUID -ne 0 ]]; then
    echo "Ce script doit être exécuté en tant que root" 
    exit 1
 fi
-
+# Sauvegarder le fichier hosts existant
 cp /etc/hosts /etc/hosts.bak
-
+# Changer les résolutions d'IP
 echo "127.0.0.2 localhost" >> /etc/hosts
 echo "8.8.8.8 facebook.com" >> /etc/hosts
