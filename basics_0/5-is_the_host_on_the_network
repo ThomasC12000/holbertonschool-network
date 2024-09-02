@@ -4,6 +4,5 @@ if [ -z "$1" ]; then
   echo "Usage: 5-is_the_host_on_the_network {IP_ADDRESS}"
   exit 1
 fi
-
 # Lancer 5 pings sur l'adresse IP passée en argument
 ping -c 5 "$1"
