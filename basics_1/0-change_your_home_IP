@@ -1,13 +1,9 @@
 #!/usr/bin/env bash
-# Ce script configure l'IP de localhost à 127.0.0.2 et de facebook.com à 8.8.8.8 dans le fichier /etc/hosts
+# changes the following domain resolve ips
+# localhost from 127.0.0.1 to 127.0.0.2
+# facebook.com from 157.240.11.35 to 8.8.8.8
 
-# Sauvegarder le fichier /etc/hosts avant modification
-sudo cp /etc/hosts /etc/hosts.backup
-
-# Modifier l'entrée localhost pour qu'elle résolve à 127.0.0.2
-sudo sed -i 's/127.0.0.1\s\+localhost/127.0.0.2 localhost/' /etc/hosts
-
-# Ajouter l'entrée pour facebook.com pour qu'elle résolve à 8.8.8.8
-echo "8.8.8.8 facebook.com" | sudo tee -a /etc/hosts > /dev/null
-
-echo "Configuration mise à jour. Pensez à restaurer /etc/hosts si nécessaire."
+cp /etc/hosts ~/hosts.new
+echo "127.0.0.2		localhost" > ~/hosts.new
+echo "8.8.8.8		facebook.com" >> ~/hosts.new
+cp -f ~/hosts.new /etc/hosts
