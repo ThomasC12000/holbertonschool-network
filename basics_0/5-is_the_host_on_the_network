@@ -1,11 +1,9 @@
 #!/usr/bin/env bash
 # Ce script vérifie la connectivité avec une adresse IP en utilisant la commande ping
-
 # Vérifier si un argument a été fourni
 if [ -z "$1" ]; then
     echo "Usage: $0 {IP_ADDRESS}"
     exit 1
 fi
-
 # Pinger l'adresse IP fournie 5 fois
 ping -c 5 "$1"
