@@ -1,0 +1,51 @@
+What happens when you type https://www.google.com in your browser and press Enter?
+
+Have you ever wondered what happens behind the scenes when you type a web address like "https://www.google.com" and hit Enter? This simple action triggers a complex chain of events involving multiple systems working together to retrieve and display the web page. Understanding this process is fundamental for software engineers, especially in interviews where questions like this are common.
+Let's walk through the steps that occur from the moment you press Enter until the web page is displayed.
+
+Step 1 : DNS Request
+The first thing that happens is the Domain Name System (DNS) request. Your browser needs to resolve the domain name "www.google.com" into an IP address, which acts as a phone number for computers. If your browser's cache doesn't already have this information, it will send a DNS query to a DNS server, which translates "www.google.com" into a machine-readable IP address like 172.217.10.46.
+What is DNS?
+DNS acts like the internet's phonebook, translating human-readable domain names into numerical IP addresses required to locate resources on the web.
+
+Step 2 : TCP/IP Connection
+Now that the browser knows the IP address, it needs to establish a connection with Google's server. This is done using the TCP/IP protocol suite:
+TCP (Transmission Control Protocol) ensures reliable communication by establishing a connection and ensuring data packets are sent and received correctly. It does this by sending a SYN packet and waiting for the server's SYN-ACK reply, completing the TCP handshake.
+IP (Internet Protocol) is responsible for routing the data packets across the internet, ensuring they reach the correct destination.
+
+Step 3 :  Firewall
+During this communication, both your network's firewall and Google's firewall examine the traffic to ensure it adheres to security rules. Firewalls are security systems that monitor and control incoming and outgoing network traffic based on predetermined security rules. They help block malicious requests and ensure that only safe traffic reaches the server.
+Step 4 : HTTPS/SSL Handshake
+Because you're using HTTPS (Hypertext Transfer Protocol Secure), the connection is encrypted. This is crucial for protecting sensitive data, such as login credentials. The browser and server perform an SSL/TLS handshake, where they exchange cryptographic keys and establish a secure, encrypted connection.
+SSL/TLS encrypts the data to ensure that no one can intercept or tamper with the information being exchanged between your browser and the server.
+
+Step 5 : Load Balancer
+Now that the secure connection is established, your request reaches Google's infrastructure. Google uses a load balancer to distribute incoming traffic across many servers. This ensures that no single server is overwhelmed and allows Google to handle massive amounts of traffic efficiently.
+The load balancer improves performance and availability by forwarding your request to a server that has the capacity to handle it.
+
+Step 6 : Web Server
+Once your request is forwarded, it arrives at one of Google's web servers. The web server is responsible for handling HTTP/HTTPS requests. It serves static content like HTML, CSS, and JavaScript files. It may also interact with back-end systems if the request requires dynamic content.
+Common web servers include Nginx and Apache.
+
+Step 7 : Application Server
+For dynamic requests, like fetching personalized search results, the web server forwards the request to an application server. This server contains the business logic needed to process the request. It interacts with databases and other services to retrieve data and generate the appropriate response for the user.
+Step 8 : Database
+In the case of a search request, the application server queries one of Google's highly distributed and optimized databases to retrieve relevant information. The database stores user data, search histories, and other persistent data needed to fulfill the request.
+Databases store, organize, and retrieve data efficiently to ensure fast and reliable responses.
+
+Step 9 : Response to the Browser
+Once the web server or application server has gathered all the necessary resources (HTML, CSS, JavaScript, images, etc.), it sends the response back to the browser. The browser then parses this data and renders the page for the user. You can now see and interact with Google's homepage or your search results.
+
+---
+
+Conclusion
+From the DNS resolution to the rendering of the web page in your browser, the entire process involves various components working together seamlessly to deliver a fast, secure, and accurate result. Understanding these steps is crucial for anyone working in web development or system engineering.
+DNS resolves domain names to IP addresses.
+TCP/IP establishes a reliable connection.
+Firewalls protect against unauthorized access.
+SSL/TLS ensures secure data transmission.
+Load balancers distribute traffic.
+Web and application servers handle and process requests.
+Databases store and retrieve data efficiently.
+
+Each component plays a critical role in delivering a seamless browsing experience, and knowing how these pieces fit together can deepen your understanding of web technologies.
